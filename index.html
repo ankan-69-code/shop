@@ -114,7 +114,7 @@
             <div class="price-tag">₹100</div>
         </div>
 
-        <div class="product-card" onclick="openProduct('Valentine Long Template', '400', 'A premium long-scroll storytelling site. Includes parallax effects, a relationship timeline, and a gallery for over 50 photos.', 'detail3.jpg')">
+        <div class="product-card" onclick="openProduct('Valentine Long Template', '400', 'The ultimate interactive love journey! Features a secret lock screen, mini-games (Balloon Pop & Memory Match), scrolling love letters, and a musical Valentine proposal.', 'detail3.jpg')">
             <img src="thumb3.jpg" alt="Preview">
             <h3>Valentine Long Template</h3>
             <div class="price-tag">₹400</div>
@@ -171,7 +171,7 @@
         </div>
 
         <div class="email-display" onclick="copyEmail()" title="Click to Copy">
-            send.here071@gmail.com
+            sendhere@gmail.com
         </div>
         <p id="copy-msg" style="font-size: 0.8rem; color: #00ff88; height: 15px;"></p>
         
@@ -211,7 +211,6 @@
     }
 
     function copyEmail() {
-        // Updated email for clipboard copy
         navigator.clipboard.writeText("sendhere@gmail.com");
         document.getElementById("copy-msg").innerText = "Email copied to clipboard!";
         setTimeout(() => { document.getElementById("copy-msg").innerText = ""; }, 3000);
