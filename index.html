@@ -114,7 +114,7 @@
             <div class="price-tag">₹100</div>
         </div>
 
-        <div class="product-card" onclick="openProduct('Valentine Long Template', '400', 'The ultimate interactive love journey! Features a secret lock screen, mini-games (Balloon Pop & Memory Match), scrolling love letters, and a musical Valentine proposal.', 'detail3.jpg')">
+        <div class="product-card" onclick="openProduct('Valentine Long Template', '400', 'The ultimate love journey! Starts with a \'Who is my love?\' lock screen, followed by a Balloon Pop game, Memory Match challenge, and a Music Player finale asking \'Will you be my Valentine?\'.', 'detail3.jpg')">
             <img src="thumb3.jpg" alt="Preview">
             <h3>Valentine Long Template</h3>
             <div class="price-tag">₹400</div>
@@ -126,7 +126,7 @@
             <div class="price-tag">₹200</div>
         </div>
 
-        <div class="product-card" onclick="openProduct('Interactive Birthday', '100', 'Full screen confetti, balloon popping animations, and a countdown timer to the special day. Easy to customize.', 'detail5.jpg')">
+        <div class="product-card" onclick="openProduct('Interactive Birthday', '100', 'A sleek blue-themed template with password protection. Includes a secure login, confetti explosion effect, and a beautiful personalized photo card.', 'detail5.jpg')">
             <img src="thumb5.jpg" alt="Preview">
             <h3>Birthday Template</h3>
             <div class="price-tag">₹100</div>
@@ -211,7 +211,8 @@
     }
 
     function copyEmail() {
-        navigator.clipboard.writeText("sendhere@gmail.com");
+        // Updated email for clipboard copy
+        navigator.clipboard.writeText("send.here071@gmail.com");
         document.getElementById("copy-msg").innerText = "Email copied to clipboard!";
         setTimeout(() => { document.getElementById("copy-msg").innerText = ""; }, 3000);
     }
