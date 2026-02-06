@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeVault | Premium Scripts</title>
+    <style>
+        /* --- CYBERPUNK STYLES --- */
+        :root {
+            --neon: #00f2ff;
+            --pink: #ff007a;
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-dim: #cccccc;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #000000 100%);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        nav {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 242, 255, 0.1);
+        }
+        .logo { font-size: 2rem; font-weight: 800; color: var(--neon); cursor: pointer; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 15px var(--neon); }
+
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+
+        /* GRID */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; }
+        
+        .product-card {
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+            padding: 20px; cursor: pointer; transition: all 0.4s; position: relative; overflow: hidden;
+        }
+        .product-card:hover { transform: translateY(-10px) scale(1.02); border-color: var(--pink); box-shadow: 0 0 30px rgba(255, 0, 122, 0.3); }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; filter: brightness(0.9); transition: 0.3s; }
+        .product-card:hover img { filter: brightness(1.1); }
+        .product-card h3 { margin: 10px 0; font-size: 1.3rem; }
+        .price-tag { color: var(--neon); font-size: 1.4rem; font-weight: bold; text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
+
+        /* PRODUCT VIEW */
+        #product-view {
+            display: none; grid-template-columns: 1.2fr 1fr; gap: 50px;
+            background: rgba(20, 20, 25, 0.8); border: 1px solid var(--neon);
+            padding: 50px; border-radius: 30px; backdrop-filter: blur(20px);
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.1); animation: fadeIn 0.5s ease;
+        }
+        .back-btn { color: var(--pink); cursor: pointer; margin-bottom: 20px; display: inline-block; font-weight: bold; font-size: 1.1rem; }
+        .detail-img { width: 100%; border-radius: 20px; border: 2px solid rgba(255,255,255,0.1); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .info-panel h1 { font-size: 2.8rem; margin: 0 0 10px 0; }
+        .detail-desc { color: var(--text-dim); line-height: 1.8; font-size: 1.1rem; margin: 20px 0; }
+
+        /* BUY BOX */
+        .buy-box {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px; border-radius: 25px; margin-top: 30px; text-align: center;
+        }
+        .big-price { font-size: 2.5rem; color: var(--neon); margin-bottom: 10px; font-weight: bold; }
+        
+        .btn-main {
+            background: linear-gradient(45deg, var(--neon), var(--pink)); color: white; border: none; width: 100%;
+            padding: 18px; border-radius: 50px; font-size: 1.2rem; font-weight: bold; cursor: pointer;
+            text-transform: uppercase; box-shadow: 0 5px 20px rgba(255, 0, 122, 0.4); transition: 0.3s; margin-top: 15px;
+        }
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255, 0, 122, 0.6); }
+
+        /* MODAL */
+        #payment-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); backdrop-filter: blur(15px);
+            display: none; justify-content: center; align-items: center; z-index: 2000;
+        }
+        .modal-card {
+            background: #111; border: 2px solid var(--neon); padding: 40px; border-radius: 30px;
+            text-align: center; max-width: 400px; width: 90%; box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
+        }
+        .email-display {
+            background: #222; padding: 15px; border-radius: 10px; border: 1px solid #444;
+            color: var(--neon); font-family: monospace; font-size: 1.1rem; margin: 15px 0;
+            user-select: all; cursor: pointer;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 800px) { #product-view { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo" onclick="showGrid()">CODE VAULT</div>
+    <div style="font-size: 0.9rem; opacity: 0.7; color: var(--pink);">Ankan's Marketplace</div>
+</nav>
+
+<div class="container">
+    <div id="main-grid" class="grid">
+        
+        <div class="product-card" onclick="openProduct('Valentine Booklet', '150', 'A virtual flipbook to store your best memories. Features page-turning animations, photo slots, and soft background music integration.', 'detail1.jpg')">
+            <img src="thumb1.jpg" alt="Preview">
+            <h3>Valentine Booklet</h3>
+            <div class="price-tag">₹150</div>
+        </div>
+
+        <div class="product-card" onclick="openProduct('Do You Love Me?', '100', 'The classic viral prank template! When they try to click NO, the button runs away. A fun and cute way to ask someone out.', 'detail2.jpg')">
+            <img src="thumb2.jpg" alt="Preview">
+            <h3>"Do You Love Me?" App</h3>
+            <div class="price-tag">₹100</div>
+        </div>
+
+        <div class="product-card" onclick="openProduct('Valentine Long Template', '400', 'A premium long-scroll storytelling site. Includes parallax effects, a relationship timeline, and a gallery for over 50 photos.', 'detail3.jpg')">
+            <img src="thumb3.jpg" alt="Preview">
+            <h3>Valentine Long Template</h3>
+            <div class="price-tag">₹400</div>
+        </div>
+
+        <div class="product-card" onclick="openProduct('Hacker Proposal', '200', 'Propose in style! A Matrix-themed terminal interface that types out your love story code before popping the big question.', 'detail4.jpg')">
+            <img src="thumb4.jpg" alt="Preview">
+            <h3>Hacker Proposal</h3>
+            <div class="price-tag">₹200</div>
+        </div>
+
+        <div class="product-card" onclick="openProduct('Interactive Birthday', '100', 'Full screen confetti, balloon popping animations, and a countdown timer to the special day. Easy to customize.', 'detail5.jpg')">
+            <img src="thumb5.jpg" alt="Preview">
+            <h3>Birthday Template</h3>
+            <div class="price-tag">₹100</div>
+        </div>
+
+        <div class="product-card" onclick="openProduct('Anniversary Special', '200', 'Elegant and classy design with soft transitions and golden typography, perfect for celebrating years of togetherness.', 'detail6.jpg')">
+            <img src="thumb6.jpg" alt="Preview">
+            <h3>Anniversary Template</h3>
+            <div class="price-tag">₹200</div>
+        </div>
+
+    </div>
+
+    <div id="product-view">
+        <div class="image-col">
+            <span class="back-btn" onclick="showGrid()">← Back to Shop</span>
+            <img id="detail-img" class="detail-img" src="">
+        </div>
+        <div class="info-panel">
+            <h1 id="detail-title">Product Name</h1>
+            <p style="color:var(--pink); font-weight:bold;">★ Premium Verified Code</p>
+            <p id="detail-desc" class="detail-desc">Description text here...</p>
+            <div class="buy-box">
+                <div class="big-price">₹<span id="detail-price">0</span></div>
+                <p style="color: #00ff88; margin-bottom: 20px;">✓ Available for Instant Download</p>
+                <button class="btn-main" onclick="openModal()">Get This Code</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="payment-modal">
+    <div class="modal-card">
+        <h2 style="color: var(--pink); margin-top:0;">Scan to Pay</h2>
+        <p>Amount: <b style="font-size: 1.2rem;">₹<span id="pay-amt"></span></b></p>
+        
+        <img src="qr-code.jpg" style="width: 200px; border-radius: 15px; border: 2px solid white; margin: 10px 0;">
+        
+        <div style="text-align: left; font-size: 0.9rem; margin-top: 10px; color: #ccc;">
+            <p><b>Step 1:</b> Scan & Pay via GPay/PhonePe.</p>
+            <p><b>Step 2:</b> Send payment screenshot to:</p>
+        </div>
+
+        <div class="email-display" onclick="copyEmail()" title="Click to Copy">
+            sendhere@gmail.com
+        </div>
+        <p id="copy-msg" style="font-size: 0.8rem; color: #00ff88; height: 15px;"></p>
+        
+        <button class="btn-main" onclick="closeModal()">I Sent the Email</button>
+        <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:gray; cursor:pointer;">Cancel</button>
+    </div>
+</div>
+
+<script>
+    let currentPrice = 0;
+
+    function openProduct(name, price, desc, detailImgSrc) {
+        document.getElementById('main-grid').style.display = 'none';
+        document.getElementById('product-view').style.display = 'grid';
+        
+        document.getElementById('detail-title').innerText = name;
+        document.getElementById('detail-price').innerText = price;
+        document.getElementById('detail-desc').innerText = desc;
+        document.getElementById('detail-img').src = detailImgSrc;
+        
+        currentPrice = price;
+        window.scrollTo(0,0);
+    }
+
+    function showGrid() {
+        document.getElementById('main-grid').style.display = 'grid';
+        document.getElementById('product-view').style.display = 'none';
+    }
+
+    function openModal() {
+        document.getElementById('pay-amt').innerText = currentPrice;
+        document.getElementById('payment-modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('payment-modal').style.display = 'none';
+    }
+
+    function copyEmail() {
+        // Updated email for clipboard copy
+        navigator.clipboard.writeText("sendhere@gmail.com");
+        document.getElementById("copy-msg").innerText = "Email copied to clipboard!";
+        setTimeout(() => { document.getElementById("copy-msg").innerText = ""; }, 3000);
+    }
+</script>
+
+</body>
+</html>
