@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeVault | Premium Scripts</title>
     <style>
-        /* --- CYBERPUNK STYLES --- */
+        /* --- CYBERPUNK STYLES (Unchanged) --- */
         :root {
             --neon: #00f2ff;
             --pink: #ff007a;
@@ -83,11 +83,11 @@
             background: #111; border: 2px solid var(--neon); padding: 40px; border-radius: 30px;
             text-align: center; max-width: 400px; width: 90%; box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
         }
-        .email-display {
-            background: #222; padding: 15px; border-radius: 10px; border: 1px solid #444;
-            color: var(--neon); font-family: monospace; font-size: 1.1rem; margin: 15px 0;
-            user-select: all; cursor: pointer;
+        .modal-card input {
+            width: 100%; padding: 15px; margin: 10px 0 20px 0; border-radius: 10px; border: 1px solid #333;
+            background: #0a0a0a; color: white; outline: none; font-size: 1rem; box-sizing: border-box;
         }
+        .modal-card input:focus { border-color: var(--pink); }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 800px) { #product-view { grid-template-columns: 1fr; } }
     </style>
@@ -102,38 +102,38 @@
 <div class="container">
     <div id="main-grid" class="grid">
         
-        <div class="product-card" onclick="openProduct('Valentine Booklet', '150', 'A virtual flipbook to store your best memories. Features page-turning animations, photo slots, and soft background music integration.', 'detail1.jpg')">
-            <img src="thumb1.jpg" alt="Preview">
+        <div class="product-card" onclick="openProduct('Valentine Booklet', '150', 'A virtual flipbook to store your best memories. Features page-turning animations, photo slots, and soft background music integration.', 'detail1.jpg', 'https://payments.cashfree.com/links/YOUR_LINK_1')">
+            <img src="thumb1.jpg" alt="Preview" loading="lazy">
             <h3>Valentine Booklet</h3>
             <div class="price-tag">₹150</div>
         </div>
 
-        <div class="product-card" onclick="openProduct('Do You Love Me?', '100', 'The classic viral prank template! When they try to click NO, the button runs away. A fun and cute way to ask someone out.', 'detail2.jpg')">
-            <img src="thumb2.jpg" alt="Preview">
+        <div class="product-card" onclick="openProduct('Do You Love Me?', '100', 'The classic viral prank template! When they try to click NO, the button runs away. A fun and cute way to ask someone out.', 'detail2.jpg', 'https://payments.cashfree.com/links/YOUR_LINK_2')">
+            <img src="thumb2.jpg" alt="Preview" loading="lazy">
             <h3>"Do You Love Me?" App</h3>
             <div class="price-tag">₹100</div>
         </div>
 
-        <div class="product-card" onclick="openProduct('Valentine Long Template', '200', 'The ultimate love journey! Starts with a \'Who is my love?\' lock screen, followed by a Balloon Pop game, Memory Match challenge, and a Music Player finale asking \'Will you be my Valentine?\'.', 'detail3.jpg')">
-            <img src="thumb3.jpg" alt="Preview">
+        <div class="product-card" onclick="openProduct('Valentine Long Template', '400', 'The ultimate love journey! Starts with a \'Who is my love?\' lock screen, followed by a Balloon Pop game, Memory Match challenge, and a Music Player finale asking \'Will you be my Valentine?\'.', 'detail3.jpg', 'https://payments.cashfree.com/links/YOUR_LINK_3')">
+            <img src="thumb3.jpg" alt="Preview" loading="lazy">
             <h3>Valentine Long Template</h3>
-            <div class="price-tag">₹200</div>
+            <div class="price-tag">₹400</div>
         </div>
 
-        <div class="product-card" onclick="openProduct('Hacker Proposal', '200', 'Propose in style! A Matrix-themed terminal interface that types out your love story code before popping the big question.', 'detail4.jpg')">
-            <img src="thumb4.jpg" alt="Preview">
+        <div class="product-card" onclick="openProduct('Hacker Proposal', '200', 'Propose in style! A Matrix-themed terminal interface that types out your love story code before popping the big question.', 'detail4.jpg', 'https://payments.cashfree.com/links/YOUR_LINK_4')">
+            <img src="thumb4.jpg" alt="Preview" loading="lazy">
             <h3>Hacker Proposal</h3>
             <div class="price-tag">₹200</div>
         </div>
 
-        <div class="product-card" onclick="openProduct('Interactive Birthday', '100', 'A sleek blue-themed template with password protection. Includes a secure login, confetti explosion effect, and a beautiful personalized photo card.', 'detail5.jpg')">
-            <img src="thumb5.jpg" alt="Preview">
+        <div class="product-card" onclick="openProduct('Interactive Birthday', '100', 'A sleek blue-themed template with password protection. Includes a secure login, confetti explosion effect, and a beautiful personalized photo card.', 'detail5.jpg', 'https://payments.cashfree.com/links/YOUR_LINK_5')">
+            <img src="thumb5.jpg" alt="Preview" loading="lazy">
             <h3>Birthday Template</h3>
             <div class="price-tag">₹100</div>
         </div>
 
-        <div class="product-card" onclick="openProduct('Anniversary Special', '200', 'Elegant and classy design with soft transitions and golden typography, perfect for celebrating years of togetherness.', 'detail6.jpg')">
-            <img src="thumb6.jpg" alt="Preview">
+        <div class="product-card" onclick="openProduct('Anniversary Special', '200', 'Elegant and classy design with soft transitions and golden typography, perfect for celebrating years of togetherness.', 'detail6.jpg', 'https://payments.cashfree.com/links/YOUR_LINK_6')">
+            <img src="thumb6.jpg" alt="Preview" loading="lazy">
             <h3>Anniversary Template</h3>
             <div class="price-tag">₹200</div>
         </div>
@@ -151,8 +151,8 @@
             <p id="detail-desc" class="detail-desc">Description text here...</p>
             <div class="buy-box">
                 <div class="big-price">₹<span id="detail-price">0</span></div>
-                <p style="color: #00ff88; margin-bottom: 20px;">✓ Available for Instant Download</p>
-                <button class="btn-main" onclick="openModal()">Get This Code</button>
+                <p style="color: #00ff88; margin-bottom: 20px;">✓ Instant Access via Cashfree Checkout</p>
+                <button class="btn-main" onclick="openCheckoutModal()">Proceed to Checkout</button>
             </div>
         </div>
     </div>
@@ -160,30 +160,24 @@
 
 <div id="payment-modal">
     <div class="modal-card">
-        <h2 style="color: var(--pink); margin-top:0;">Scan to Pay</h2>
-        <p>Amount: <b style="font-size: 1.2rem;">₹<span id="pay-amt"></span></b></p>
+        <h2 style="color: var(--neon); margin-top:0;">Secure Checkout</h2>
+        <p style="color: #aaa; margin-bottom: 5px;">Total Amount: <b style="color:white; font-size:1.2rem;">₹<span id="pay-amt"></span></b></p>
+        <p style="color: #777; font-size: 0.9rem; margin-bottom: 20px;">Enter your email to receive the file link.</p>
         
-        <img src="qr-code.jpg" style="width: 200px; border-radius: 15px; border: 2px solid white; margin: 10px 0;">
+        <input type="email" id="u-email" placeholder="Your Email Address">
         
-        <div style="text-align: left; font-size: 0.9rem; margin-top: 10px; color: #ccc;">
-            <p><b>Step 1:</b> Scan & Pay via GPay/PhonePe.</p>
-            <p><b>Step 2:</b> Send payment screenshot to:</p>
-        </div>
-
-        <div class="email-display" onclick="copyEmail()" title="Click to Copy">
-            send.here071@gmail.com
-        </div>
-        <p id="copy-msg" style="font-size: 0.8rem; color: #00ff88; height: 15px;"></p>
+        <button class="btn-main" onclick="redirectToCashfree()">Pay with Cashfree</button>
+        <div style="margin-top: 15px; font-size: 0.8rem; color: #555;">⚡ Secured by Cashfree Payments</div>
         
-        <button class="btn-main" onclick="closeModal()">I Sent the Email</button>
-        <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:gray; cursor:pointer;">Cancel</button>
+        <button onclick="closeModal()" style="margin-top:20px; background:none; border:none; color:gray; cursor:pointer;">Cancel</button>
     </div>
 </div>
 
 <script>
     let currentPrice = 0;
+    let currentCashfreeLink = "";
 
-    function openProduct(name, price, desc, detailImgSrc) {
+    function openProduct(name, price, desc, detailImgSrc, cashfreeLink) {
         document.getElementById('main-grid').style.display = 'none';
         document.getElementById('product-view').style.display = 'grid';
         
@@ -193,6 +187,8 @@
         document.getElementById('detail-img').src = detailImgSrc;
         
         currentPrice = price;
+        currentCashfreeLink = cashfreeLink; // Save the link for the chosen product
+        
         window.scrollTo(0,0);
     }
 
@@ -201,7 +197,7 @@
         document.getElementById('product-view').style.display = 'none';
     }
 
-    function openModal() {
+    function openCheckoutModal() {
         document.getElementById('pay-amt').innerText = currentPrice;
         document.getElementById('payment-modal').style.display = 'flex';
     }
@@ -210,11 +206,15 @@
         document.getElementById('payment-modal').style.display = 'none';
     }
 
-    function copyEmail() {
-        // Updated email for clipboard copy
-        navigator.clipboard.writeText("send.here071@gmail.com");
-        document.getElementById("copy-msg").innerText = "Email copied to clipboard!";
-        setTimeout(() => { document.getElementById("copy-msg").innerText = ""; }, 3000);
+    function redirectToCashfree() {
+        const email = document.getElementById('u-email').value;
+        if(!email.includes('@')) { 
+            alert("Please enter a valid email address so I can send the code!"); 
+            return; 
+        }
+        
+        // This instantly redirects the user to your secure Cashfree payment page!
+        window.location.href = currentCashfreeLink;
     }
 </script>
 
